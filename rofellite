@@ -1,34 +1,5 @@
 #!/bin/sh
 
-#ssplit() {
-    #local string="$1" array=${2:-ssplited_array} delim="${3:- }" pos=0
-    #while [ "$string" != "${string#*$delim}" ];do
-        #printf -v $array[pos++] "%s" "${string%%$delim*}"
-        #string="${string#*$delim}"
-      #done
-    #printf -v $array[pos] "%s" "$string"
-#}
-
-#echo "ssplit"
-#ssplit "$(parcellite -l)" histelements $'\n----------\n'
-#echo "ssplit done"
-
-#i=1
-#rinput=""
-#for element in "${histelements[@]}"
-#do
-  #echo "iter"
-  #printf -v iform "%03d" $i
-  #escaped="$(echo "$element" | tr '\n' ' ' | sed 's/^ *//g' | sed 's/ *$//g')"
-  #rinput=$(echo -e "$rinput\n$iform: $escaped")
-  #((i++))
-#done
-
-##echo "$rinput"
-
-#echo "$rinput" | rofi -dmenu -lines 20 -mesg "clipboard" -markup -markup-rows -width 80 -p 'selection: '
-
-
 P_HIST="$(parcellite -l)"
 
 F_HIST="$(echo "$P_HIST" | awk 'BEGIN { RS = "\n----------\n"; FS="\n"; OFS=" " } { $1=$1; print $0 }' | sed 's/^ *//' | sed '/^\s*$/d' | awk '{printf("%003d %s\n", NR, $0)}')"
