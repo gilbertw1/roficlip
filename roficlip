@@ -2,7 +2,7 @@
 
 C_HIST="$(clipster -c -o -n 500 -0 | gawk 'BEGIN {RS = "\0"; FS="\n"; OFS=" " } { $1=$1; print $0 }' | sed 's/^ *//' | sed '/^\s*$/d' | gawk '{printf("%003d %s\n", NR, $0)}')"
 
-SELECTION="$(echo "$C_HIST" | rofi -dmenu -lines 20 -width 80 -p 'selection: ')"
+SELECTION="$(echo "$C_HIST" | rofi -dmenu -i -lines 20 -width 80 -p 'selection: ')"
 
 NUMBER="$(echo "$SELECTION" | cut -c1-3 | sed 's/^0*//')"
 ((NUMBER++))
