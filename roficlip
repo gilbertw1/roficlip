@@ -1,0 +1,13 @@
+#!/bin/sh
+
+P_HIST="$(clipster -c -o -n 500 -m $'\n----------\n')"
+
+F_HIST="$(echo "$P_HIST" | awk 'BEGIN { RS = "----------"; FS="\n"; OFS=" " } { $1=$1; print $0 }' | sed 's/^ *//' | sed '/^\s*$/d' | awk '{printf("%003d %s\n", NR, $0)}')"
+
+SELECTION="$(echo "$F_HIST" | rofi -dmenu -lines 20 -width 80 -p 'selection: ')"
+
+NUMBER="$(echo "$SELECTION" | cut -c1-3 | sed 's/^0*//')"
+
+EXACT_SELECTION="$(echo "$P_HIST" | awk 'BEGIN { RS = "\n----------\n" }'"NR == $NUMBER { print; exit }")"
+
+echo "$EXACT_SELECTION" | xsel --clipboard
