@@ -1,22 +1,11 @@
 # rofellite
-A simple shell script that surfaces clipboard history from parcellite in Rofi
+A simple shell script that surfaces clipboard history from clipster in Rofi
 
 ## Dependencies
 
-- ```parcellite``` (forked version: https://github.com/gilbertw1/parcellite)
+- ```clipster```
 - ```xsel```
 
 ## Running
 
-    > ./rofellite
-
-## Install Forked Parcellite
-
-    git clone git@github.com:gilbertw1/parcellite.git
-    cd parcellite
-    libtoolize --force
-    aclocal
-    autoheader
-    automake --force-missing --add-missing
-    autoconf
-    sudo make install
+    > ./roficlip
