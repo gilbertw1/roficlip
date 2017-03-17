@@ -6,8 +6,8 @@ F_HIST="$(echo "$P_HIST" | awk 'BEGIN { RS = "\n----------\n"; FS="\n"; OFS=" " 
 
 SELECTION="$(echo "$F_HIST" | rofi -dmenu -lines 20 -width 80 -p 'selection: ')"
 
-NUMBER="$(echo "$SELECTION" | cut -c1-3)"
-((NUMBER++))
+NUMBER="$(echo "$SELECTION" | cut -c1-3 | sed 's/^0*//')"
+NUMBER=$((NUMBER+2))
 
 EXACT_SELECTION="$(echo "$P_HIST" | awk 'BEGIN { RS = "\n----------\n" }'"NR == $NUMBER { print; exit }")"
 
