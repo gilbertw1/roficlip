@@ -5,7 +5,6 @@ A simple shell script that surfaces clipboard history from clipster in Rofi
 
 - ```gawk```
 - ```clipster```
-- ```xsel```
 
 ## Running
 

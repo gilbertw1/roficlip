@@ -9,4 +9,4 @@ NUMBER="$(echo "$SELECTION" | cut -c1-3 | sed 's/^0*//')"
 
 EXACT_SELECTION="$(clipster -c -o -n 500 -0 | gawk 'BEGIN {RS = "\0"}'"NR == $NUMBER { print; exit }")"
 
-echo "$EXACT_SELECTION" | xsel --clipboard
+echo -n "$EXACT_SELECTION" | clipster -c
