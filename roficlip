@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# Verify clipster is running, fail otherwise
+clipster -o > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+  echo 'Failed to retrieve history from Clipster, please ensure daemon is running!'
+  exit 1
+fi
+
 # Extract clipboard history from clipster and format for rofi
 #  - Remove Newlines from clips
 #  - Split into lines based on NUL byte
