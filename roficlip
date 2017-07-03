@@ -22,7 +22,11 @@ C_HIST="$(clipster -c -o -n 500 -0 \
         | gawk '{printf("%003d %s\n", NR, $0)}')"
 
 # Echo clipboard items to Rofi and save the selection made by user
-SELECTION="$(echo "$C_HIST" | rofi -dmenu -i -lines 20 -width 80 -p 'selection: ')"
+if [[ -t 0 ]]; then
+  SELECTION="$(echo "$C_HIST" | fzf-tmux -d 15 --prompt='selection: ')"
+else
+  SELECTION="$(echo "$C_HIST" | rofi -dmenu -i -lines 20 -width 80 -p 'selection: ')"
+fi
 
 # Verify user made a selection
 if [ -n "$SELECTION" ]; then
