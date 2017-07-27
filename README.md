@@ -1,4 +1,5 @@
 # roficlip
+
 A simple shell script that surfaces clipboard history from clipster in Rofi
 
 ![Roficlip Example](example.png)
@@ -7,7 +8,14 @@ A simple shell script that surfaces clipboard history from clipster in Rofi
 
 - ```gawk``` - https://www.gnu.org/software/gawk/
 - ```clipster``` - https://github.com/mrichar1/clipster
+- ```fzf``` - https://github.com/junegunn/fzf
 
-## Running
+## Run
 
-    > ./roficlip
+    ./roficlip
+
+## Arch Linux
+
+AUR - https://aur.archlinux.org/packages/roficlip
+
+    yaourt -S roficlip
