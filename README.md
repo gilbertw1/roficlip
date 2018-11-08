@@ -12,10 +12,16 @@ A simple shell script that surfaces clipboard history from clipster in Rofi
 
 ## Run
 
-    ./roficlip
+```bash
+./roficlip
+```
 
 ## Arch Linux
 
 AUR - https://aur.archlinux.org/packages/roficlip
 
-    yaourt -S roficlip
+```bash
+$ git clone https://aur.archlinux.org/roficlip.git
+$ cd roficlip
+$ makepkg -si
+```
